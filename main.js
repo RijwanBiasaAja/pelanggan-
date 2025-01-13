@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js';
-import { 
+import {
   getFirestore,
   collection,
   doc,
@@ -21,3 +21,22 @@ const firebaseConfig = {
   appId: "1:137591161633:web:e89f54d3cf2a29d9fdb460",
   measurementId: "G-B5KFGBXLMV"
 };
+
+//fungsi ambil daftar pelanggan
+export async function ambilDaftarPelanggan() {
+  const refDokumen = collection(basisdata, "pelanggan");
+  const kueri = query(refDokumen, orderBy("nama"));
+  const cuplikankueri = await getDocs(kueri);
+
+  let hasilkueri = [];
+  cuplikankueri.forEach((dokumen) => {
+    hasilkueri.push({
+      id: dokumen.id,
+      nama: dokumen.data().nama,
+      alamat: dokumen.data().alamat,
+      nohape: dokumen.data().nohape
+    })
+  })
+
+  return hasilkueri;
+}
