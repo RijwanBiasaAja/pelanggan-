@@ -40,3 +40,6 @@ export async function ambilDaftarPelanggan() {
 
   return hasilkueri;
 }
+// Inisialisasi firebase
+const aplikasi = initializeApp(firebaseConfig)
+const basisdata = getFirestore(aplikasi)
