@@ -28,7 +28,7 @@
         <th scope="col">No</th>
         <th scope="col">Nama</th>
         <th scope="col">Alamat</th>
-        <th scope="col">Nomor Hp</th>
+        <th scope="col">No Hp</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
@@ -38,7 +38,7 @@
 
   <a href="formtambah.html">Tambah Pelanggan</a>
   <script type="module">
-    import { ambilDaftarPelanggan } from './main.js';
+    import { ambilDaftarPelanggan, hapusPelanggan } from './main.js';
 
     $(document).ready(async function() {
       let elemenDaftarPelanggan = $("#daftar-pelanggan > tbody");
@@ -53,18 +53,18 @@
           "<td>" + data.nama + "</td>" +
           "<td>" + data.alamat + "</td>" +
           "<td>" + data.nohape + "</td>" +
-          "<td>" + "<a href='#' class='me-2 link-ubah' data='" + data.id + "'>ubah</a><button class='btn btn-danger tombol-hapus' data='" + data.id + "'>hapus</button> " + "</td>" +
+          "<td>" + "<a href='#' class='me-2 link-ubah' data='" + data.id + "'>ubah</a><button class='btn btn-danger tombol' data='" + data.id + "'>hapus</button> " + "</td>" +
           "</tr>"
         )
         nomor = nomor + 1
       })
 
 
-      $('.tombol-hapus').click(async function() {
-        if (confirm("Apakah benar mau menghapus?")) {
-          await hapusInventory($(this).attr('data'))
+      $('.tombol').click(async function() {
+      
+          await hapusPelanggan($(this).attr('data'))
           location.reload()
-        }
+        
       })
 
       $(".link-ubah").click(async function() {
