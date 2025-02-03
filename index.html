@@ -35,6 +35,7 @@
     <tbody>
   </table>
 
+<p id="total">Total Pelanggan</p>
 
   <a href="formtambah.html">Tambah Pelanggan</a>
   <script type="module">
@@ -57,14 +58,15 @@
           "</tr>"
         )
         nomor = nomor + 1
+        
+        $('#total').html("Total Pelnggan :" + (nomor -1))
       })
 
 
       $('.tombol').click(async function() {
-      
-          await hapusPelanggan($(this).attr('data'))
-          location.reload()
-        
+       await hapusPelanggan($(this).attr('data'))
+       location.reload()
+
       })
 
       $(".link-ubah").click(async function() {
